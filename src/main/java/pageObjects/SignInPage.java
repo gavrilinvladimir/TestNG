@@ -57,6 +57,7 @@ public class SignInPage extends AbstractPage{
     public void verifyContinueBtnEnabledSoft(Boolean result){
         SoftAssert soft = new SoftAssert();
         soft.assertTrue(isContinueBtnEnabled() == result, String.format("Is Continue button Enabled': '%s'",isContinueBtnEnabled()));
+        soft.assertAll();
     }
 
 

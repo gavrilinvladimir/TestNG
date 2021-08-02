@@ -15,9 +15,6 @@ public class SignInPageTests extends BaseTest {
         new SignInPage()
                 .enterEmail(email)
                 .verifyContinueBtnEnabledHard(expected_result);
-                //.clickContinueBtn()
-                //.enterPassword(password)
-                //.clickSubmitSignInBtn();
     }
 
     @Parameters ({ "page_url","email","expected_result" })
@@ -29,9 +26,6 @@ public class SignInPageTests extends BaseTest {
         new SignInPage()
                 .enterEmail(email)
                 .verifyContinueBtnEnabledSoft(expected_result);
-        //.clickContinueBtn()
-        //.enterPassword(password)
-        //.clickSubmitSignInBtn();
     }
 
     @Parameters ({ "page_url","email","expected_result" })
