@@ -1,5 +1,6 @@
 package pageObjects;
 
+import driver.Driver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 
@@ -12,5 +13,9 @@ public class HomePage extends AbstractPage{
         LOG.info("'Sign in' button clicked");
         return new SignInPage();
     }
-
+    public HomePage openHomePage(final String url) {
+        openPage(url);
+        LOG.info(String.format("Proceeded to '%s' URL.",url));
+        return this;
+    }
 }

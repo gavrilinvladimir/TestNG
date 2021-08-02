@@ -3,6 +3,7 @@ package pageObjects;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class SignInPage extends AbstractPage{
     public static final Logger LOG = Logger.getLogger(SignInPage.class);
@@ -44,14 +45,19 @@ public class SignInPage extends AbstractPage{
     }
 
     public boolean isContinueBtnEnabled() {
-        boolean isEnabled = isEnabled(loginFailedErrorMessage);
+        boolean isEnabled = getElement(continueBtn).isEnabled();
+        boolean isDisplayed = getElement(continueBtn).isDisplayed();
         LOG.info(String.format("Is Continue button enabled': '%s'",isEnabled));
         return isEnabled;
     }
 
-    public void verifyContinueBtnEnabledHard(){
-        Assert.assertTrue(isContinueBtnEnabled(),
-                "Continue button is Enabled");
+    public void verifyContinueBtnEnabledHard(Boolean result){
+        Assert.assertTrue(isContinueBtnEnabled() == result, String.format("Is Continue button Enabled': '%s'",isContinueBtnEnabled()));
     }
+    public void verifyContinueBtnEnabledSoft(Boolean result){
+        SoftAssert soft = new SoftAssert();
+        soft.assertTrue(isContinueBtnEnabled() == result, String.format("Is Continue button Enabled': '%s'",isContinueBtnEnabled()));
+    }
+
 
 }

@@ -6,18 +6,45 @@ import pageObjects.SignInPage;
 
 public class SignInPageTests extends BaseTest {
 
-    @Parameters ({ "page_url","email","password" })
+    @Parameters ({ "page_url","email","expected_result" })
     @Test(description = "Scenario with verifying all the criteria using hard asserts")
-    public void verifyEmailCriteriaHardAsserts(String pageUrl,String email,String password) {
+    public void verifyEmailCriteriaHardAsserts(String pageUrl,String email, Boolean expected_result) {
         new HomePage()
-                .openPage(pageUrl);
-                //.clickSignInButton();
+                .openHomePage(pageUrl)
+                .clickSignInButton();
         new SignInPage()
                 .enterEmail(email)
-                .verifyContinueBtnEnabledHard();
+                .verifyContinueBtnEnabledHard(expected_result);
                 //.clickContinueBtn()
                 //.enterPassword(password)
                 //.clickSubmitSignInBtn();
     }
 
+    @Parameters ({ "page_url","email","expected_result" })
+    @Test(description = "Scenario with verifying all the criteria using soft asserts")
+    public void verifyEmailCriteriaSoftAsserts(String pageUrl,String email, Boolean expected_result) {
+        new HomePage()
+                .openHomePage(pageUrl)
+                .clickSignInButton();
+        new SignInPage()
+                .enterEmail(email)
+                .verifyContinueBtnEnabledSoft(expected_result);
+        //.clickContinueBtn()
+        //.enterPassword(password)
+        //.clickSubmitSignInBtn();
+    }
+
+    @Parameters ({ "page_url","email","expected_result" })
+    @Test(description = "Scenario with verifying only 'boundary values' criteria")
+    public void verifyEmailBoundary(String pageUrl,String email, Boolean expected_result) {
+        new HomePage()
+                .openHomePage(pageUrl)
+                .clickSignInButton();
+        new SignInPage()
+                .enterEmail(email)
+                .verifyContinueBtnEnabledSoft(expected_result);
+        //.clickContinueBtn()
+        //.enterPassword(password)
+        //.clickSubmitSignInBtn();
+    }
 }

@@ -1,5 +1,6 @@
 package newCases;
 
+import config.Log4jPropertiesConfiguration;
 import driver.Driver;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
@@ -11,8 +12,8 @@ public abstract class BaseTest extends Driver {
     private Logger LOG = Logger.getLogger(BaseTest.class);
     private Test test;
 
-    @BeforeMethod(alwaysRun = true)
-    public void beforeMethod() {
+    @BeforeSuite(alwaysRun = true)
+    public void beforeSuite() {
         initDriver();
         // LOG = Logger.getLogger(method.getDeclaringClass());
         // test = method.getAnnotation(Test.class);
@@ -20,9 +21,10 @@ public abstract class BaseTest extends Driver {
         // LOG.info(String.format("Description: %s.",test.description()));
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void afterMethod(final Method method){
-        LOG.info(String.format("Test '%s' completed.",method.getName()));
+
+    @AfterSuite(alwaysRun = true)
+    public void afterSuite(){
+ //       LOG.info(String.format("Test '%s' completed.",method.getName()));
         quitDriver();
     }
 }
