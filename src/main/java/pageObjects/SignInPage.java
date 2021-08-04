@@ -11,7 +11,7 @@ public class SignInPage extends AbstractPage{
     private By continueBtn = By.id("kc-login-next");
     private By passwordInput = By.id("password");
     private By submitSignInBtn = By.id("kc-login");
-    private By loginFailedErrorMessage = By.xpath("//span[text()=\"We can't find user with such credentials.\"]");
+    private By loginFailedErrorMessage = By.xpath("//span[@class='error-text']");
 
 
     public SignInPage enterEmail (String email){

@@ -5,16 +5,14 @@ import driver.Driver;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 
-import java.lang.reflect.Method;
-
-public abstract class BaseTest extends Driver {
+public abstract class BaseTest {
 
     private Logger LOG = Logger.getLogger(BaseTest.class);
     private Test test;
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {
-        initDriver();
+        Driver.initDriver();
         // LOG = Logger.getLogger(method.getDeclaringClass());
         // test = method.getAnnotation(Test.class);
         // LOG.info(String.format("Test '%s' started.",method.getName()));
@@ -25,6 +23,6 @@ public abstract class BaseTest extends Driver {
     @AfterSuite(alwaysRun = true)
     public void afterSuite(){
  //       LOG.info(String.format("Test '%s' completed.",method.getName()));
-        quitDriver();
+        //Driver.quitDriver();
     }
 }

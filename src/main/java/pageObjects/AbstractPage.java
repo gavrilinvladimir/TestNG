@@ -1,10 +1,7 @@
 package pageObjects;
 
 import driver.Driver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,6 +26,7 @@ public class AbstractPage {
     }
 
     List<WebElement> getElements(By locator) {
+        WebElement webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return Driver.getDriver().findElements(locator);
     }
 
@@ -50,4 +48,8 @@ public class AbstractPage {
         }
     }
 
+    public void scrollToElement (WebDriver driver, By element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", getElement(element));
+    }
 }

@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Suite3 - 1 positive scenario test which will be verifying only ‘’boundary values” criteria">
+    <parameter name = "page_url" value="https://training.by"/>
+    <test name = "Test1 - For email input with 63 chars">
+        <parameter name = "email" value="havrylinvolodymyr@gmail.com"/>
+        <parameter name = "password" value="TestPWD1"/>
+        <parameter name = "expected_result" value="true"/>
+        <parameter name = "by_skill" value="Java"/>
+        <classes>
+            <class name="newCases.TrainingListPageTests"/>
+        </classes>
+    </test>
+</suite>

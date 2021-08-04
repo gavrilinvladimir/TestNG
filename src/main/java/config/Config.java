@@ -10,7 +10,7 @@ public abstract class Config {
         try (FileInputStream fis = new FileInputStream("src/main/java/config/config.properties")) {
             property.load(fis);
         } catch (IOException e) {
-            System.err.println("ОШИБКА: Файл свойств отсуствует!");
+            System.err.println("ERROR: config.properties is missing");
         }
         return property;
     }

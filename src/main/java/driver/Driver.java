@@ -13,24 +13,34 @@ public abstract class Driver {
     private static WebDriver webDriver;
     public static void initDriver() {
         Properties prop = Config.readProperties();
-        if (prop.getProperty("browser.name").equals("chrome")) {
-            System.setProperty(prop.getProperty("chrome.name"), prop.getProperty("chrome.path"));
+        final String browserName = prop.getProperty("browser.name");
+        final String chromeName = prop.getProperty("chrome.name");
+        final String chromePath = prop.getProperty("chrome.path");
+        final String firefoxName = prop.getProperty("firefox.name");
+        final String firefoxPath = prop.getProperty("firefox.path");
+        final Integer browserWidth = Integer.parseInt(prop.getProperty("browser.width"));
+        final Integer browserHeight = Integer.parseInt(prop.getProperty("browser.height"));
+        final Integer driverImplicitWait = Integer.parseInt(prop.getProperty("driver.implicit.wait"));
+
+
+        if (browserName.equals("chrome")) {
+            System.setProperty(chromeName, chromePath);
             webDriver = new ChromeDriver();
-        } else if (prop.getProperty("browser.name").equals("firefox")) {
-            System.setProperty(prop.getProperty("firefox.name"), prop.getProperty("firefox.path"));
+        } else if (browserName.equals("firefox")) {
+            System.setProperty(firefoxName, firefoxPath);
             webDriver = new FirefoxDriver();
         } else {
-            System.out.println("You have configured incorrect browserName="+ prop.getProperty("browser.name") +"Please, check java/config/config.properties file");
+            System.out.println("You have configured incorrect browserName="+ browserName +"Please, check java/config/config.properties file");
         }
-        webDriver.manage().window().setSize(new Dimension(Integer.parseInt(prop.getProperty("browser.width")),Integer.parseInt(prop.getProperty("browser.height"))));
-        webDriver.manage().timeouts().implicitlyWait(Integer.parseInt(prop.getProperty("driver.implicit.wait")), TimeUnit.SECONDS);
+        webDriver.manage().window().setSize(new Dimension(browserWidth,browserHeight));
+        webDriver.manage().timeouts().implicitlyWait(driverImplicitWait, TimeUnit.SECONDS);
     }
 
     public static WebDriver getDriver() {
         return webDriver;
     }
 
-    protected void quitDriver() {
+    public static void quitDriver() {
         if (webDriver != null) {
             webDriver.quit();
             webDriver=null;
