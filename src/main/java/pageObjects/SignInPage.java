@@ -46,18 +46,11 @@ public class SignInPage extends AbstractPage{
 
     public boolean isContinueBtnEnabled() {
         boolean isEnabled = getElement(continueBtn).isEnabled();
-        LOG.info(String.format("Is Continue button enabled': '%s'",isEnabled));
         return isEnabled;
     }
 
     public void verifyContinueBtnEnabledHard(Boolean result){
         Assert.assertTrue(isContinueBtnEnabled() == result, String.format("Is Continue button Enabled': '%s'",isContinueBtnEnabled()));
+        LOG.info(String.format("Verified: Continue button is Enabled: '%s'",result));
     }
-    public void verifyContinueBtnEnabledSoft(Boolean result){
-        SoftAssert soft = new SoftAssert();
-        soft.assertTrue(isContinueBtnEnabled() == result, String.format("Is Continue button Enabled': '%s'",isContinueBtnEnabled()));
-        soft.assertAll();
-    }
-
-
 }

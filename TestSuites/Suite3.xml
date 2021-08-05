@@ -10,7 +10,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>
@@ -23,7 +23,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>
@@ -35,7 +35,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>
@@ -47,7 +47,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>
@@ -59,7 +59,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>
@@ -71,7 +71,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>
@@ -83,7 +83,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>
@@ -95,7 +95,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>
@@ -107,7 +107,7 @@
         <classes>
             <class name="newCases.SignInPageTests">
                 <methods>
-                    <include name="verifyEmailCriteriaSoftAsserts"/>
+                    <include name="verifyEmailCriteriaHardAsserts"/>
                 </methods>
             </class>
         </classes>

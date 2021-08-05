@@ -35,7 +35,7 @@ public class TrainingListPageBO extends HomePageBO {
                 LOG.info("Verified: All training list items contains Java");
             }
             catch (AssertionError error) {
-                LOG.info(error);
+                LOG.error(error);
             }
             return this;
     }
@@ -48,7 +48,7 @@ public class TrainingListPageBO extends HomePageBO {
             LOG.info("Verified: No training message is displayed");
         }
         catch (AssertionError error) {
-            LOG.info(error);
+            LOG.error(error);
         }
     }
 
