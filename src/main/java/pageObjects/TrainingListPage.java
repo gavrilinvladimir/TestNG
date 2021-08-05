@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 
 public class TrainingListPage extends AbstractPage{
     public static final Logger LOG = Logger.getLogger(TrainingListPage.class);
-    private By trainingListPageButton = By.xpath("//ul[@class='main-nav__list']//a[contains(@class,'training')]");
     private By trainingSection = By.xpath("//h1[contains(@class,'section-ui__title') and contains(text(),'TRAINING')]");
     private By searchInput = By.xpath("//input[@placeholder='Search']");
     private By allCitiesCheckbox = By.xpath("//input[@ng-checked='isCountryChecked(activeCountryTab)']/following-sibling::span");
@@ -21,11 +20,6 @@ public class TrainingListPage extends AbstractPage{
     private By countryDropdown = By.xpath("//div[@class='location__countries']");
 
 
-    public TrainingListPage clickTrainingListPageButton () {
-        getElement(trainingListPageButton).click();
-        LOG.info("Training List button was clicked.");
-        return this;
-    }
 /*
     public TrainingListPage scrollToTrainingListSection () {
         new WebDriverWait(Driver.getDriver(), 10).until(

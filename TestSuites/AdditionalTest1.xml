@@ -1,9 +1,9 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Suite4 - Verify ‘Trainings’ search works properly with searching in ‘Skills’.">
+<suite name = "Verify ‘Trainings’ search works properly with searching in ‘Skills’.">
     <parameter name = "page_url" value="https://training.by"/>
-    <test name = "Test1 - For email input with 63 chars">
+    <test name = "Test1 - Check trainings for Java and Ruby">
         <parameter name = "email" value="havrylinvolodymyr@gmail.com"/>
         <parameter name = "password" value="TestPWD1"/>
         <parameter name = "by_skill" value="Java"/>
@@ -13,8 +13,7 @@
         <classes>
             <class name="newCases.TrainingListPageTests">
                 <methods>
-                    <include name="verifyTrainingListSkillJava"/>
-                    <include name="verifyTrainingListSkillRuby"/>
+                    <include name="verifyTrainingListSkill"/>
                 </methods>
             </class>
         </classes>

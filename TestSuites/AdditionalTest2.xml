@@ -1,0 +1,13 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Verify links on ‘Blog’ Page">
+    <parameter name = "page_url" value="https://training.by"/>
+    <test name = "Test1 - Check links on Blog page">
+        <parameter name = "email" value="havrylinvolodymyr@gmail.com"/>
+        <parameter name = "password" value="TestPWD1"/>
+        <classes>
+            <class name="newCases.BlogPageTests"/>
+        </classes>
+    </test>
+</suite>

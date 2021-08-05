@@ -10,8 +10,8 @@ public abstract class BaseTest {
     private Logger LOG = Logger.getLogger(BaseTest.class);
     private Test test;
 
-    @BeforeSuite(alwaysRun = true)
-    public void beforeSuite() {
+    @BeforeTest(alwaysRun = true)
+    public void beforeTest() {
         Driver.initDriver();
         // LOG = Logger.getLogger(method.getDeclaringClass());
         // test = method.getAnnotation(Test.class);
@@ -20,8 +20,8 @@ public abstract class BaseTest {
     }
 
 
-    @AfterSuite(alwaysRun = true)
-    public void afterSuite(){
+    @AfterTest(alwaysRun = true)
+    public void afterTest(){
  //       LOG.info(String.format("Test '%s' completed.",method.getName()));
         Driver.quitDriver();
     }

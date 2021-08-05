@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="TestScope for HW1"  >
+<suite name="TestScope for Additional Tasks"  >
     <suite-files>
-        <suite-file path="TestSuites/Suite1.xml" />
-        <suite-file path="TestSuites/Suite2.xml" />
-        <suite-file path="TestSuites/Suite3.xml" />
+        <suite-file path="TestSuites/AdditionalTest1.xml" />
+        <suite-file path="TestSuites/AdditionalTest2.xml" />
+        <suite-file path="TestSuites/AdditionalTest3.xml" />
     </suite-files>
 </suite>
