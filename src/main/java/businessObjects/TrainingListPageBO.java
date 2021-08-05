@@ -1,6 +1,7 @@
 package businessObjects;
 
 import config.Config;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
@@ -12,6 +13,7 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 public class TrainingListPageBO extends HomePageBO {
+    public static final Logger LOG = Logger.getLogger(TrainingListPageBO.class);
     public TrainingListPageBO verifyTrainingListItemTitle (String filterParameter, String validateParameter){
             try {
                 Properties prop = Config.readProperties();
@@ -30,9 +32,10 @@ public class TrainingListPageBO extends HomePageBO {
                     soft.assertTrue(pattern.matcher(text).find(), String.format("Item doesn't contain word %s': '%s'", validateParameter, text));
                 }
                 soft.assertAll();
+                LOG.info("Verified: All training list items contains Java");
             }
             catch (AssertionError error) {
-                System.out.println(error);
+                LOG.info(error);
             }
             return this;
     }
@@ -42,20 +45,17 @@ public class TrainingListPageBO extends HomePageBO {
                 isNoTrainingsMessageDisplayed();
         try {
             Assert.assertTrue(trainingsMessageDisplayed, String.format("Is NoTrainingsMessage button Displayed': '%s'", trainingsMessageDisplayed));
+            LOG.info("Verified: No training message is displayed");
         }
         catch (AssertionError error) {
-            System.out.println(error);
+            LOG.info(error);
         }
     }
 
     public void verifyCountryDropdownDisplayed () {
         boolean countryDropdownDisplayed = new TrainingListPage().
                 isCountryDropdownDisplayed();
-        try {
-            Assert.assertTrue(countryDropdownDisplayed, String.format("Is countryDropdownDisplayed button Displayed': '%s'", countryDropdownDisplayed));
-        }
-        catch (AssertionError error) {
-            System.out.println(error);
-        }
+            Assert.assertTrue(countryDropdownDisplayed, String.format("Is country Dropdown Displayed button Displayed': '%s'", countryDropdownDisplayed));
+            LOG.info("Verified: Country DropDown is displayed");
     }
 }

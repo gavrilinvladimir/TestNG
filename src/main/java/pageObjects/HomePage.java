@@ -14,12 +14,12 @@ public class HomePage extends AbstractPage{
 
     public SignInPage clickSignInButton() {
         getElement(signInButton).click();
-        LOG.info("'Sign in' button clicked");
+        LOG.info("'Sign in' button is clicked");
         return new SignInPage();
     }
     public HomePage openHomePage(final String url) {
         openPage(url);
-        LOG.info(String.format("Proceeded to '%s' URL.",url));
+        LOG.info(String.format("Proceeded to '%s' URL",url));
         return this;
     }
 
@@ -30,13 +30,13 @@ public class HomePage extends AbstractPage{
     }
     public HomePage clickTrainingListPageButton () {
         getElement(trainingListPageButton).click();
-        LOG.info("Training List button was clicked.");
+        LOG.info("Training List button is clicked");
         return this;
     }
 
     public HomePage clickBlogPageButton () {
         getElement(blogPageButton).click();
-        LOG.info("Blog button was clicked.");
+        LOG.info("Blog button is clicked");
         return this;
     }
 }

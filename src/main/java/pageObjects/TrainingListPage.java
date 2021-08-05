@@ -5,11 +5,9 @@ import driver.Driver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.regex.Pattern;
 
 public class TrainingListPage extends AbstractPage{
     public static final Logger LOG = Logger.getLogger(TrainingListPage.class);
@@ -20,52 +18,36 @@ public class TrainingListPage extends AbstractPage{
     private By countryDropdown = By.xpath("//div[@class='location__countries']");
 
 
-/*
-    public TrainingListPage scrollToTrainingListSection () {
-        new WebDriverWait(Driver.getDriver(), 10).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
-        scrollToElement(Driver.getDriver(), trainingSection);
-        return this;
-    }
-
-    public TrainingListPage scrollToallCitiesCheckbox () {
-        new WebDriverWait(Driver.getDriver(), 10).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
-        scrollToElement(Driver.getDriver(), allCitiesCheckbox);
-        return this;
-    }
- */
-
     public TrainingListPage clickSearchInput () {
         getElement(searchInput).click();
-        LOG.info("Search Input field was clicked.");
+        LOG.info("Search Input field is clicked");
         return this;
     }
 
     public TrainingListPage clickFilterBy (String filter) {
         By filterBySkills = By.xpath(generateFilterByXpath(filter));
         getElement(filterBySkills).click();
-        LOG.info("By skills filter was clicked.");
+        LOG.info(String.format("'%s' filter is selected",filter));
         return this;
     }
 
     public TrainingListPage clickCheckmark (String skill) {
         By bySkillsCheckmark = By.xpath(generateCheckmarkXpath(skill));
         getElement(bySkillsCheckmark).click();
-        LOG.info("Checkmark was clicked.");
+        LOG.info(String.format("'%s' checkmark was clicked",skill));
         return this;
     }
 
     public TrainingListPage clickCountry (String country) {
         By countrySelect = By.xpath(generateCountryXpath(country));
         getElement(countrySelect).click();
-        LOG.info("Country was clicked.");
+        LOG.info(String.format("%s is clicked",country));
         return this;
     }
 
     public TrainingListPage uncheckallCitiesCheckbox () {
         getElement(allCitiesCheckbox).click();
-        LOG.info("Location filter is closed.");
+        LOG.info("Location filter is closed");
         return this;
     }
 
@@ -120,4 +102,20 @@ public class TrainingListPage extends AbstractPage{
             System.out.println("You have configured incorrect training_item_parameter="+ parameter +" Please, check test_file.xml config");
         return xpath;
     }
+
+    /*
+    public TrainingListPage scrollToTrainingListSection () {
+        new WebDriverWait(Driver.getDriver(), 10).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+        scrollToElement(Driver.getDriver(), trainingSection);
+        return this;
+    }
+
+    public TrainingListPage scrollToallCitiesCheckbox () {
+        new WebDriverWait(Driver.getDriver(), 10).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+        scrollToElement(Driver.getDriver(), allCitiesCheckbox);
+        return this;
+    }
+ */
 }

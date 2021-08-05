@@ -11,7 +11,6 @@ public class TrainingListPageTests extends BaseTest {
 
     @Parameters ({ "page_url","email","password","by_skill","filter_by","training_item_parameter","by_skill_2" })
     @Test(description = "Scenario for check training for Java and message for Ruby")
-
     public void verifyTrainingListSkill(String pageUrl, String email, String password, String by_skill, String filter_by, String training_item_parameter, String by_skill_2) {
         LoginToSite.loginToSite(pageUrl,email,password);
         new HomePage()

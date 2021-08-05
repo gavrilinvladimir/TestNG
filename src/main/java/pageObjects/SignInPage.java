@@ -16,25 +16,25 @@ public class SignInPage extends AbstractPage{
 
     public SignInPage enterEmail (String email){
         getElement(emailInput).sendKeys(email);
-        LOG.info("Email was entered.");
+        LOG.info(String.format("Email='%s' was entered",email));
         return this;
     }
 
     public SignInPage clickContinueBtn (){
         getElement(continueBtn).click();
-        LOG.info("Continue button was clicked.");
+        LOG.info("Continue button is clicked");
         return this;
     }
 
     public SignInPage enterPassword (String password){
         getElement(passwordInput).sendKeys(password);
-        LOG.info("Password was entered.");
+        LOG.info(String.format("Password='%s' is entered",password));
         return this;
     }
 
     public SignInPage clickSubmitSignInBtn (){
         getElement(submitSignInBtn).click();
-        LOG.info("Submit Sign In button was clicked.");
+        LOG.info("Submit Sign In button was clicked");
         return this;
     }
 
