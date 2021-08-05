@@ -52,4 +52,9 @@ public class AbstractPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", getElement(element));
     }
+
+    public void waitPageLoad() {
+        new WebDriverWait(Driver.getDriver(), 10).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+    }
 }

@@ -8,6 +8,7 @@
         <parameter name = "password" value="TestPWD1"/>
         <parameter name = "expected_result" value="true"/>
         <parameter name = "by_skill" value="Java"/>
+        <parameter name = "filter_by" value="By skill"/>
         <classes>
             <class name="newCases.TrainingListPageTests"/>
         </classes>
