@@ -9,7 +9,6 @@
         <parameter name = "country" value="Ukraine"/>
         <parameter name = "city" value="Lviv"/>
         <parameter name = "training_item_parameter" value="Country"/>
-        <parameter name = "search_training_item_parameter" value="Ukraine"/>
         <classes>
             <class name="newCases.TrainingListPageTests">
             <methods>

@@ -23,6 +23,6 @@ public abstract class BaseTest {
     @AfterSuite(alwaysRun = true)
     public void afterSuite(){
  //       LOG.info(String.format("Test '%s' completed.",method.getName()));
-        //Driver.quitDriver();
+        Driver.quitDriver();
     }
 }

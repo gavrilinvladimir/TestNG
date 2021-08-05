@@ -9,6 +9,7 @@
         <parameter name = "by_skill" value="Java"/>
         <parameter name = "filter_by" value="By skill"/>
         <parameter name = "by_skill_2" value="Ruby"/>
+        <parameter name = "training_item_parameter" value="Title"/>
         <classes>
             <class name="newCases.TrainingListPageTests">
                 <methods>
