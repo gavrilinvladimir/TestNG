@@ -30,7 +30,7 @@ public class TrainingListPageTests extends BaseTest {
     }
     @Parameters ({ "page_url","email","password","country","city","training_item_parameter" })
     @Test(description = "Scenario for check no training message for Ruby")
-    public void verifyTrainingListLocationUkraine(String pageUrl, String email, String password, String country, String city, String training_item_parameter) {
+    public void verifyTrainingListLocation(String pageUrl, String email, String password, String country, String city, String training_item_parameter) {
         LoginToSite.loginToSite(pageUrl,email,password);
         new HomePage()
                 .clickTrainingListPageButton();

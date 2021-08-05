@@ -12,7 +12,7 @@
         <classes>
             <class name="newCases.TrainingListPageTests">
             <methods>
-                <include name="verifyTrainingListLocationUkraine"/>
+                <include name="verifyTrainingListLocation"/>
             </methods>
             </class>
         </classes>
