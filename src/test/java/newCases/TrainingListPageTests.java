@@ -19,7 +19,7 @@ public class TrainingListPageTests extends BaseTest {
                 .uncheckallCitiesCheckbox()
                 .clickFilterBySkills(filter_by)
                 .clickJavaCheckmark(by_skill)
-                .verifyTraningListItemShown(by_skill);
+                .verifyTraniingListItemShown(by_skill);
         //new TrainingListPageBO()
         //        .verifyResultsContainsJava();
     }

@@ -64,7 +64,7 @@ public class TrainingListPage extends AbstractPage{
         return this;
     }
 
-    public TrainingListPage verifyTraningListItemShown(String by_skill) {
+    public TrainingListPage verifyTraniingListItemShown(String by_skill) {
         waitPageLoad();
         List<WebElement> traningListItemShownArray = Driver.getDriver().findElements(traningListItemShown);
         SoftAssert soft= new SoftAssert();
