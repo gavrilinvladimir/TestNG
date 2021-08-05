@@ -1,20 +1,20 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Suite4 - Verify ‘Trainings’ search works properly with searching in ‘Skills’.">
+<suite name = "Suite5 - Verify ‘Trainings’ search works properly with searching in ‘Locations’">
     <parameter name = "page_url" value="https://training.by"/>
     <test name = "Test1 - For email input with 63 chars">
         <parameter name = "email" value="havrylinvolodymyr@gmail.com"/>
         <parameter name = "password" value="TestPWD1"/>
-        <parameter name = "by_skill" value="Java"/>
-        <parameter name = "filter_by" value="By skill"/>
-        <parameter name = "by_skill_2" value="Ruby"/>
+        <parameter name = "country" value="Ukraine"/>
+        <parameter name = "city" value="Lviv"/>
+        <parameter name = "training_item_parameter" value="Country"/>
+        <parameter name = "search_training_item_parameter" value="Ukraine"/>
         <classes>
             <class name="newCases.TrainingListPageTests">
-                <methods>
-                    <include name="verifyTrainingListSkillJava"/>
-                    <include name="verifyTrainingListSkillRuby"/>
-                </methods>
+            <methods>
+                <include name="verifyTrainingListLocationUkraine"/>
+            </methods>
             </class>
         </classes>
     </test>

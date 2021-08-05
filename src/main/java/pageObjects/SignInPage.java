@@ -46,7 +46,6 @@ public class SignInPage extends AbstractPage{
 
     public boolean isContinueBtnEnabled() {
         boolean isEnabled = getElement(continueBtn).isEnabled();
-        boolean isDisplayed = getElement(continueBtn).isDisplayed();
         LOG.info(String.format("Is Continue button enabled': '%s'",isEnabled));
         return isEnabled;
     }

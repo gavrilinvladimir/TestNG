@@ -1,5 +1,6 @@
 package pageObjects;
 
+import config.Config;
 import driver.Driver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Pattern;
 
 public class TrainingListPage extends AbstractPage{
@@ -15,7 +17,9 @@ public class TrainingListPage extends AbstractPage{
     private By trainingSection = By.xpath("//h1[contains(@class,'section-ui__title') and contains(text(),'TRAINING')]");
     private By searchInput = By.xpath("//input[@placeholder='Search']");
     private By allCitiesCheckbox = By.xpath("//input[@ng-checked='isCountryChecked(activeCountryTab)']/following-sibling::span");
-    private By traningListItemShown = By.xpath("//div[contains(@class,'training-list__container')]/div[@training-item='itemTraining']//div[contains(@class,'training-item__title')]");
+    private By noTrainingsMessage = By.xpath("//span[@ng-show='filteredTrainings.length == 0']");
+    private By countryDropdown = By.xpath("//div[@class='location__countries']");
+
 
     public TrainingListPage clickTrainingListPageButton () {
         getElement(trainingListPageButton).click();
@@ -44,17 +48,24 @@ public class TrainingListPage extends AbstractPage{
         return this;
     }
 
-    public TrainingListPage clickFilterBySkills (String filter_by) {
-        By filterBySkills = By.xpath(generateFilterByXpath(filter_by));
+    public TrainingListPage clickFilterBy (String filter) {
+        By filterBySkills = By.xpath(generateFilterByXpath(filter));
         getElement(filterBySkills).click();
         LOG.info("By skills filter was clicked.");
         return this;
     }
 
-    public TrainingListPage clickJavaCheckmark (String by_skill) {
-        By bySkillsCheckmark = By.xpath(generateBySkillCheckmarkXpath(by_skill));
+    public TrainingListPage clickCheckmark (String skill) {
+        By bySkillsCheckmark = By.xpath(generateCheckmarkXpath(skill));
         getElement(bySkillsCheckmark).click();
-        LOG.info("Java checkmark was clicked.");
+        LOG.info("Checkmark was clicked.");
+        return this;
+    }
+
+    public TrainingListPage clickCountry (String country) {
+        By countrySelect = By.xpath(generateCountryXpath(country));
+        getElement(countrySelect).click();
+        LOG.info("Country was clicked.");
         return this;
     }
 
@@ -64,26 +75,55 @@ public class TrainingListPage extends AbstractPage{
         return this;
     }
 
-    public TrainingListPage verifyTraniingListItemShown(String by_skill) {
+    public List<WebElement> getTrainingList(String parameter) {
         waitPageLoad();
-        List<WebElement> traningListItemShownArray = Driver.getDriver().findElements(traningListItemShown);
-        SoftAssert soft= new SoftAssert();
-        Pattern pattern = Pattern.compile(String.format("(%s)|(%s)|(%s)",by_skill,by_skill.toUpperCase(),by_skill.toLowerCase()));
-        for (int i=0;i<traningListItemShownArray.size(); i++) {
-            String title = traningListItemShownArray.get(i).getText();
-            soft.assertTrue(pattern.matcher(title).find(),String.format("Title doesn't contain word %s': '%s'",by_skill,title));
-        }
-        soft.assertAll();
-        return this;
+        By trainingList = By.xpath(trainingListItemXpath(parameter));
+        List<WebElement> listItems = Driver.getDriver().findElements(trainingList);
+        return listItems;
     }
 
-    public String generateFilterByXpath (String filter_by) {
-        String xpath = String.format("//div[@class='drop-down-choose__header']/div[contains(text(),'%s')]",filter_by);
+    public String generateFilterByXpath (String filter) {
+        String xpath = String.format("//div[@class='drop-down-choose__header']/div[contains(text(),'%s')]",filter);
         return xpath;
     }
 
-    public String generateBySkillCheckmarkXpath (String by_skill) {
-        String xpath = String.format("//label[normalize-space()='Java' and contains(@class,'location__not-active-label')]/span[@class='checkmark']",by_skill);
+    public String generateCheckmarkXpath (String skill) {
+        String xpath = String.format("//label[normalize-space()='%s' and contains(@class,'location__not-active-label')]/span[@class='checkmark']",skill);
+        return xpath;
+    }
+
+    public String generateCountryXpath (String country) {
+        String xpath = String.format("//div[@ng-click='activeCountryChoose(locations)' and contains(text(),'%s')]",country);
+        return xpath;
+    }
+
+    public boolean isNoTrainingsMessageDisplayed() {
+        boolean isDisplayed = isDisplayed(noTrainingsMessage);
+        LOG.info(String.format("Is noTrainingsMessage displayed': '%s'",isDisplayed));
+        return isDisplayed;
+    }
+
+    public boolean isCountryDropdownDisplayed() {
+        boolean isDisplayed = isDisplayed(countryDropdown);
+        LOG.info(String.format("Is countryDropdown displayed': '%s'",isDisplayed));
+        return isDisplayed;
+    }
+
+    public String trainingListItemXpath (String parameter) {
+        Properties prop = Config.readProperties();
+        final String parameterTitle = prop.getProperty("parameter.title");
+        final String parameterCountry = prop.getProperty("parameter.country");
+        final String titlePath = prop.getProperty("training.item.title");
+        final String countryPath = prop.getProperty("training.item.country");
+        String xpath = new String();
+        if (parameter.equals(parameterTitle)) {
+            xpath = String.format("//div[contains(@class,'training-list__container')]/div[@training-item='itemTraining']//%s]", titlePath);
+        }
+        else if (parameter.equals(parameterCountry)) {
+            xpath = String.format("//div[contains(@class,'training-list__container')]/div[@training-item='itemTraining']//%s]", countryPath);
+        }
+        else
+            System.out.println("You have configured incorrect training_item_parameter="+ parameter +" Please, check test_file.xml config");
         return xpath;
     }
 }

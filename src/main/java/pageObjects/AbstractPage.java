@@ -53,7 +53,7 @@ public class AbstractPage {
         js.executeScript("arguments[0].scrollIntoView(true);", getElement(element));
     }
 
-    public void waitPageLoad() {
+    public static void waitPageLoad() {
         new WebDriverWait(Driver.getDriver(), 10).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
